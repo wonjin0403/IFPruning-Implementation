@@ -1,0 +1,43 @@
+defaults:
+  - _self_
+
+seed: 777
+run_name: ifpruning_stage1
+tokenizer: /nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct
+
+source_model: /nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct
+attn_implementation: sdpa
+
+extractor_init: checkpoints/extractor_302m_pretrained
+
+predictor:
+  head_hidden_dim: 128
+
+pruning:
+  topk_per_layer: 4096
+  mask_method: soft
+
+train_dataset: processed_datasets/slimpajama_chunk_pairs
+
+output_dir: checkpoints/stage1_ifpruning
+
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+num_workers: 2
+gradient_checkpointing: true
+
+lr_llama: 5.0e-6
+lr_predictor: 1.0e-4
+weight_decay: 0.1
+warmup_ratio: 0.01
+lr_scheduler: cosine
+max_steps: 60000
+max_grad_norm: 1.0
+
+logging_steps: 20
+save_steps: 2000
+report_to: tensorboard
+
+hydra:
+  run:
+    dir: outputs/stage1/${now:%Y-%m-%d_%H-%M-%S}
