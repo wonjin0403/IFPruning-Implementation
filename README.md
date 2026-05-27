@@ -112,7 +112,7 @@ accelerate launch --num_processes 4 --mixed_precision bf16 \
     train_datasets='[processed_datasets/tulu_v2_sft_qwen3b_smollm,processed_datasets/flan_v2_sft_qwen3b_smollm]' \
     tokenizer=Qwen/Qwen2.5-3B-Instruct \
     +predictor_tokenizer=HuggingFaceTB/SmolLM2-360M \
-    per_device_train_batch_size=4 gradient_accumulation_steps=2 \
+    per_device_train_batch_size=2 gradient_accumulation_steps=4 \
     gradient_checkpointing=false \
     lr_llama=1e-6 lr_predictor=1e-4 lr_scheduler=cosine \
     max_steps=5000 output_dir=checkpoints/stage2_qwen3b

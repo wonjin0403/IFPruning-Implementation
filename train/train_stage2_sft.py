@@ -25,11 +25,6 @@ from models.sparsity_predictor import LlamaExtractorSparsityPredictor
 
 
 def load_stage1_checkpoint(ckpt_dir: str, torch_dtype=torch.bfloat16):
-    """Reconstruct (masked_llm, predictor) from a Stage 1 checkpoint dir.
-
-    Works for any supported source LLM (Llama, Qwen2, ...) — dispatched on the
-    saved llama/ directory's `config.json:model_type`.
-    """
     ckpt = Path(ckpt_dir)
     src_cfg = AutoConfig.from_pretrained(ckpt / "llama")
     masked_cls = masked_class_for(src_cfg.model_type)
