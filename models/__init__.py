@@ -1,4 +1,3 @@
-from .masked_llama import MaskedLlamaMLP, MaskedLlamaForCausalLM, masked_llama_from_pretrained
 from .masked_qwen2 import MaskedQwen2MLP, MaskedQwen2ForCausalLM, masked_qwen2_from_pretrained
 from .masked_model import masked_from_pretrained, masked_class_for
 from .sparsity_predictor import LlamaExtractorSparsityPredictor, build_predictor_from_extractor
@@ -6,9 +5,6 @@ from .topk import straight_through_topk, soft_topk, random_topk_mask, static_nor
 from .weight_gather import gather_pruned_mlp, build_gathered_llama
 
 __all__ = [
-    "MaskedLlamaMLP",
-    "MaskedLlamaForCausalLM",
-    "masked_llama_from_pretrained",
     "MaskedQwen2MLP",
     "MaskedQwen2ForCausalLM",
     "masked_qwen2_from_pretrained",

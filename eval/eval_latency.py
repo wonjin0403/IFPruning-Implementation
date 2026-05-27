@@ -30,9 +30,9 @@ def cuda_timer(label: str, sync: bool = True):
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--variant", choices=["dense", "ifpruned"], required=True)
-    p.add_argument("--source_model", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--source_model", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--ckpt", default=None)
-    p.add_argument("--tokenizer", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--tokenizer", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--prompt", default="Explain dynamic structured pruning of LLMs in three paragraphs.")
     p.add_argument("--gen_len", type=int, default=256)
     p.add_argument("--n_warmup", type=int, default=2)

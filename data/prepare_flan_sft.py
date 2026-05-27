@@ -12,7 +12,7 @@ from data.prepare_tulu_sft import render_with_assistant_mask, IGNORE_INDEX
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--tokenizer", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--tokenizer", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--dataset_name", default="SirNeural/flan_v2",
                    help="Alternative: chiayewken/flan-v2")
     p.add_argument("--split", default="train")

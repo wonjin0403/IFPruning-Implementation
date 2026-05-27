@@ -2,7 +2,7 @@
 
 Reproduction of *Instruction-Following Pruning for Large Language Models* (arXiv:2501.02086) applied to **`Qwen/Qwen2.5-3B-Instruct`**, with **`HuggingFaceTB/SmolLM2-360M`** as the sparsity-predictor backbone (in place of the paper's 302M web-pretrained backbone).
 
-The goal is to plug a small sparsity predictor into Qwen2.5-3B-Instruct and learn an input-conditioned dynamic top-k mask over the FFN intermediate channels (`11008 → 5504` per layer, **50% pruning**), so that **~1.5 B parameters are active** per forward pass. The pipeline is generic (dispatcher in `models/masked_model.py` supports both Llama and Qwen2 source LLMs) — Llama-3.1-8B paths still work, see `--source_model` overrides.
+The goal is to plug a small sparsity predictor into Qwen2.5-3B-Instruct and learn an input-conditioned dynamic top-k mask over the FFN intermediate channels (`11008 → 5504` per layer, **50% pruning**), so that **~1.5 B parameters are active** per forward pass. Only the Qwen2 source path is shipped in this repo; the dispatcher in `models/masked_model.py` is single-branch but can be extended to other architectures by adding a new `MaskedXxxForCausalLM`.
 
 This repository includes:
 - a fully runnable, instrumented IFPruning training + evaluation pipeline,
@@ -17,9 +17,6 @@ This repository includes:
   * [Stage 2: IFPruning SFT](#stage-2-ifpruning-sft)
 - [Evaluation](#evaluation)
 - [The full report-experiment suite](#the-full-report-experiment-suite)
-- [Repository layout](#repository-layout)
-- [Notes & open questions](#notes--open-questions)
-- [References](#references)
 
 ## Environment
 ```bash

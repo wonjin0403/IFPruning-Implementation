@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 
 VARIANT=${1:-dense}
-SOURCE_MODEL=${SOURCE_MODEL:-/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct}
+SOURCE_MODEL=${SOURCE_MODEL:-Qwen/Qwen2.5-3B-Instruct}
 CKPT=${CKPT:-checkpoints/stage2_sft/step_00060000}
 TASKS=${TASKS:-paper_full}
 BATCH_SIZE=${BATCH_SIZE:-4}

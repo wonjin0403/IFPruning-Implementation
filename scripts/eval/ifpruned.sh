@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 
-SOURCE_MODEL=${SOURCE_MODEL:-/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct}
+SOURCE_MODEL=${SOURCE_MODEL:-Qwen/Qwen2.5-3B-Instruct}
 CKPT=${CKPT:-checkpoints/stage2_sft/step_00060000}
 EVAL_DATASET=${EVAL_DATASET:-processed_datasets/slimpajama_chunk_pairs_eval}
 

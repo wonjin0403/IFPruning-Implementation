@@ -13,7 +13,7 @@ IGNORE_INDEX = -100
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--tokenizer", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--tokenizer", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--dataset_name", default="allenai/tulu-v2-sft-mixture")
     p.add_argument("--split", default="train")
     p.add_argument("--raw_dir", default="raw_datasets/tulu_v2")

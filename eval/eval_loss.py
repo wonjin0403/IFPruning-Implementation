@@ -15,7 +15,7 @@ from transformers import AutoTokenizer
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data.collators import ChunkPairCollator
-from models.masked_llama import masked_llama_from_pretrained
+from models.masked_model import masked_from_pretrained
 from models.topk import random_topk_mask, static_norm_topk_mask
 from train.train_stage2_sft import load_stage1_checkpoint
 
@@ -23,10 +23,10 @@ from train.train_stage2_sft import load_stage1_checkpoint
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--variant", choices=["dense", "random", "static_norm", "ifpruned"], required=True)
-    p.add_argument("--source_model", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--source_model", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--ckpt", default=None, help="Stage 1/2 checkpoint dir (ifpruned variant)")
     p.add_argument("--eval_dataset", required=True)
-    p.add_argument("--tokenizer", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--tokenizer", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--batch_size", type=int, default=2)
     p.add_argument("--topk", type=int, default=4096)
     p.add_argument("--max_batches", type=int, default=200)
@@ -46,7 +46,7 @@ def main():
         assert args.ckpt is not None
         llama, predictor = load_stage1_checkpoint(args.ckpt)
     else:
-        llama = masked_llama_from_pretrained(args.source_model, torch_dtype=torch.bfloat16)
+        llama = masked_from_pretrained(args.source_model, torch_dtype=torch.bfloat16)
         predictor = None
 
     static_mask = None

@@ -3,9 +3,9 @@ defaults:
 
 seed: 777
 run_name: ifpruning_stage1
-tokenizer: /nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct
+tokenizer: Qwen/Qwen2.5-3B-Instruct
 
-source_model: /nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct
+source_model: Qwen/Qwen2.5-3B-Instruct
 attn_implementation: sdpa
 
 extractor_init: checkpoints/extractor_302m_pretrained

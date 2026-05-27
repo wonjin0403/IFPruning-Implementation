@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("--tokenizer", default="/nas_data2/LLM_weight/llm/llama3.1/Llama-3.1-8B-Instruct")
+    p.add_argument("--tokenizer", default="Qwen/Qwen2.5-3B-Instruct")
     p.add_argument("--dataset_name", default="MBZUAI-LLM/SlimPajama-627B-DC")
     p.add_argument("--dataset_config", default=None)
     p.add_argument("--split", default="train")

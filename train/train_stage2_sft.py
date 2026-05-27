@@ -1,14 +1,3 @@
-"""Stage 2: IFPruning SFT.
-
-Same dual-model loop as Stage 1, but:
-  - data is Tulu-v2 + FLAN-V2 instead of SlimPajama chunk pairs
-  - predictor input is the first user message, llm input is the full chat template
-  - labels are -100 outside of assistant tokens (already in the dataset)
-
-Init: load `cfg.init_from` (a Stage 1 checkpoint dir produced by stage1's
-save_checkpoint).
-"""
-
 from __future__ import annotations
 
 import json
